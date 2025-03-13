@@ -6,10 +6,8 @@ from torch.utils.data import Dataset
 from datasets import load_dataset
 from collections import Counter
 
-local_cache_dir = './local_dataset_cache'
+dataset = load_dataset('Helsinki-NLP/tatoeba_mt', 'ara-eng')
 
-# Load the dataset from the local cache directory
-dataset = load_dataset('Helsinki-NLP/tatoeba_mt', 'ara-eng', cache_dir=local_cache_dir)
 # Use 'validation' as training data and 'test' as evaluation data.
 train_data_raw = dataset['validation']
 eval_data_raw = dataset['test']
