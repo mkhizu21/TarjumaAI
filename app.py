@@ -8,8 +8,8 @@ from collections import Counter
 
 import pandas as pd
 
-dataset = pd.read_csv("https://huggingface.co/datasets/Helsinki-NLP/tatoeba_mt/raw/main/ara-eng.csv")
-
+# Load CSV directly from repo
+dataset = pd.read_csv("tatoeba_ara_eng_train.csv")
 
 # Use 'validation' as training data and 'test' as evaluation data.
 train_data_raw = dataset['validation']
