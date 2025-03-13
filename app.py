@@ -13,8 +13,6 @@ dataset = pd.read_csv("tatoeba_ara_eng_train.csv")
 
 # Use 'validation' as training data and 'test' as evaluation data.
 train_data_raw = dataset
-
-
 print("Training samples:", len(train_data_raw))    # Expected: 19528
 
 # Use these keys from the dataset
@@ -42,8 +40,8 @@ def build_vocab(sentences, min_freq=1):
     return vocab
 
 # Extract sentences from training data.
-src_sentences = [ex[src_key] for ex in train_data_raw]
-tgt_sentences = [ex[tgt_key] for ex in train_data_raw]
+src_sentences = train_data_raw[src_key].tolist()
+tgt_sentences = train_data_raw[tgt_key].tolist()
 
 src_vocab = build_vocab(src_sentences)
 tgt_vocab = build_vocab(tgt_sentences)
@@ -70,11 +68,11 @@ class TranslationDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
-        item = self.data[idx]
-        src_ids = text_to_ids(item[self.src_key], self.src_vocab)
-        # Add <sos> at the beginning and <eos> at the end of target sequence.
+        item = self.data.iloc[idx]  # ✅ CORRECT: Use `.iloc[idx]` for Pandas DataFrame
+        src_ids = text_to_ids(item[self.src_key], self.src_vocab)  
         tgt_ids = [self.tgt_vocab['<sos>']] + text_to_ids(item[self.tgt_key], self.tgt_vocab) + [self.tgt_vocab['<eos>']]
         return torch.tensor(src_ids, dtype=torch.long), torch.tensor(tgt_ids, dtype=torch.long)
+
 
 # Positional Encoding as described in "Attention is All You Need".
 class PositionalEncoding(nn.Module):
