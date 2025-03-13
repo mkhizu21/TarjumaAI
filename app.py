@@ -12,11 +12,10 @@ import pandas as pd
 dataset = pd.read_csv("tatoeba_ara_eng_train.csv")
 
 # Use 'validation' as training data and 'test' as evaluation data.
-train_data_raw = dataset['validation']
-eval_data_raw = dataset['test']
+train_data_raw = dataset
+
 
 print("Training samples:", len(train_data_raw))    # Expected: 19528
-print("Evaluation samples:", len(eval_data_raw))     # Expected: 10304
 
 # Use these keys from the dataset
 src_key = 'sourceString'
