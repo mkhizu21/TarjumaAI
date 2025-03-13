@@ -2,8 +2,7 @@ import streamlit as st
 import math
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import Dataset
 from datasets import load_dataset
 from collections import Counter
 

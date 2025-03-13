@@ -5,3 +5,7 @@ pandas
 streamlit
 numpy
 regex
+datasets
+tqdm
+math
+collections
