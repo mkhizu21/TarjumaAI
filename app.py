@@ -6,7 +6,10 @@ from torch.utils.data import Dataset
 from datasets import load_dataset
 from collections import Counter
 
-dataset = load_dataset('Helsinki-NLP/tatoeba_mt', 'ara-eng', keep_in_memory=True)
+import pandas as pd
+
+dataset = pd.read_csv("https://huggingface.co/datasets/Helsinki-NLP/tatoeba_mt/raw/main/ara-eng.csv")
+
 
 # Use 'validation' as training data and 'test' as evaluation data.
 train_data_raw = dataset['validation']
