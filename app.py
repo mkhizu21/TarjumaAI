@@ -7,7 +7,7 @@ from datasets import load_dataset
 from collections import Counter
 
 # Load the dataset splits
-dataset = load_dataset('Helsinki-NLP/tatoeba_mt', 'ara-eng', trust_remote_code=True)
+dataset = load_dataset('Helsinki-NLP/tatoeba_mt', 'ara-eng')
 # Use 'validation' as training data and 'test' as evaluation data.
 train_data_raw = dataset['validation']
 eval_data_raw = dataset['test']
